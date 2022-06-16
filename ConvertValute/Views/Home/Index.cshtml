@@ -1,0 +1,185 @@
+﻿@model ConvertValute.Models.CurrencyConverter
+@using Newtonsoft.Json;
+@{
+    var usd = Model.USD;
+    var eur = Model.EUR;
+    var rub = Model.RUB;
+}
+@using ConvertValute.Controllers;
+
+<div class="container rate-page">
+    <div class="title d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between ">
+            <span class="card-title">Қурби асъори </span>
+            <div id="myCarousel" class="carousel slide vertical" data-ride="carousel" data-interval="10000"
+                 data-pause="false">
+                <div class="carousel-inner carousel1-item">
+                    <div class="active carousel-item xazina">
+                        хазина
+                    </div>
+                    <div class="carousel-item intiqol">
+                        интиқол
+                    </div>
+                    <div class="carousel-item bmt">
+                        БМТ
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="date-container">
+            <span class="date" id="currency-date"></span>
+            <span class="date" id="currency-time"></span>
+        </div>
+    </div>
+    <section class="card">
+        <div class="card-title">
+            <!-- Заголовки таблицы -->
+            <div class="titles d-flex justify-content-between">
+                <span>Асъор</span>
+                <div id="myCarousel2" class="carousel carousel2 slide vertical" data-ride="carousel"
+                     data-interval="10000" data-pause="false">
+                    <div class="carousel-inner">
+                        <!-- Хазина -->
+                        <div class="active carousel-item rates-title buy">
+                            <div class="d-flex">
+                                <span>Харид</span>
+                                <span>Фурӯш</span>
+                            </div>
+                        </div>
+                        <!-- Интикол -->
+                        <div class="carousel-item rates-title buy">
+                            <div class="d-flex">
+                                <span>Харид</span>
+                                <span>Фурӯш</span>
+                            </div>
+                        </div>
+                        <!-- БМТ -->
+                        <div class="carousel-item rates-title off-rate">
+                            Қурби расмӣ
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Валюта-->
+            <div class="rates d-flex justify-content-between">
+                <div class="rate">
+                    <img src="./img/usd.png" alt="доллар">
+                    USD
+                    <span>Доллари ИМА</span>
+                </div>
+                <div id="myCarousel3" class="carousel carousel3 slide vertical" data-ride="carousel"
+                     data-interval="10000" data-pause="false">
+                    <div class="carousel-inner">
+                        <!-- Хазина харид фуруш-->
+                        <div class="active carousel-item rates buy">
+                            <div class="d-flex">
+                                <span><span id="USDBuyXazina"></span></span>
+                                <span><span id="USDSellXazina"></span></span>
+                            </div>
+                        </div>
+                        <!--  Интикол харид фуруш -->
+                        <div class="carousel-item rates buy">
+                            <div class="d-flex">
+                                <span id="USDBuyIntiqol"></span>
+                                <span id="USDSellIntiqol"></span>
+                            </div>
+                        </div>
+                        <!--  БМТ Курби расми -->
+                        <div class="carousel-item rates off-rate">
+                            <div class="d-flex">
+                                <span><span id="USDBmt"></span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Валюта-->
+            <div class="rates d-flex justify-content-between">
+                <div class="rate">
+                    <img src="./img/eur.png" alt="евро">
+                    EUR
+                    <span>Евро</span>
+                </div>
+                <div id="myCarousel4" class="carousel carousel3 slide vertical" data-ride="carousel"
+                     data-interval="10000" data-pause="false">
+                    <div class="carousel-inner">
+                        <!-- Хазина харид фуруш-->
+                        <div class="active carousel-item rates buy">
+                            <div class="d-flex">
+                                <span id="EURBuyXazina"></span>
+                                <span id="EURSellXazina"></span>
+                            </div>
+                        </div>
+                        <!--  Интикол харид фуруш -->
+                        <div class="carousel-item rates buy">
+                            <div class="d-flex">
+                                <span id="EURBuyIntiqol"></span>
+                                <span id="EURSellIntiqol"></span>
+                            </div>
+                        </div>
+                        <!--  БМТ Курби расми -->
+                        <div class="carousel-item rates off-rate">
+                            <div class="d-flex">
+                                <span id="EURBmt"></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Валюта-->
+            <div class="rates d-flex justify-content-between">
+                <div class="rate">
+                    <img src="./img/rub.png" alt="рубл">
+                    RUB
+                    <span>Рубли русӣ</span>
+                </div>
+                <div id="myCarousel5" class="carousel carousel3 slide vertical" data-ride="carousel"
+                     data-interval="10000" data-pause="false">
+                    <div class="carousel-inner">
+                        <!-- Хазина харид фуруш-->
+                        <div class="active carousel-item rates buy">
+                            <div class="d-flex">
+                                <span id="RUBBuyXazina"></span>
+                                <span id="RUBSellXazina"></span>
+                            </div>
+                        </div>
+                        <!--  Интикол харид фуруш -->
+                        <div class="carousel-item rates buy">
+                            <div class="d-flex">
+                                <span id="RUBBuyIntiqol"></span>
+                                <span id="RUBSellIntiqol"></span>
+                            </div>
+                        </div>
+                        <!--  БМТ Курби расми -->
+                        <div class="carousel-item rates off-rate">
+                            <div class="d-flex">
+                                <span id="RUBBmt"></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts{
+    <script>
+    setInterval(() => { window.location.reload() }, 600000);
+
+    var data = @Html.Raw(JsonConvert.SerializeObject(this.Model));
+
+        var prev = @Html.Raw(JsonConvert.SerializeObject(CurrencyState.prev));
+
+        setCurrency(data.USD, "USD");
+        setCurrency(data.EUR, "EUR");
+        setCurrency(data.RUB, "RUB");
+
+
+    </script>
+
+}
